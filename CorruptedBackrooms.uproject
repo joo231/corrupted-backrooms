@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "4.27",
+	"Category": "",
+	"Description": "Corrupted Backrooms — itch.io game (UE 4.27.2, C++ + Blueprints)",
+	"Modules": [
+		{
+			"Name": "CorruptedBackrooms",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
