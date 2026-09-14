@@ -5,6 +5,8 @@
 #include "CBTrain.generated.h"
 
 class UBoxComponent;
+class UStaticMeshComponent;
+class UStaticMesh;
 class ACBPlayerCharacter;
 
 UCLASS()
@@ -15,6 +17,7 @@ class CORRUPTEDBACKROOMS_API ACBTrain : public AActor
 public:
 	ACBTrain();
 
+	virtual void OnConstruction(const FTransform& Transform) override;
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
@@ -25,8 +28,8 @@ public:
 	bool IsPlayerInside() const { return bPlayerInside; }
 
 protected:
-	UStaticMeshComponent* MakePart(const FName& Name, UStaticMesh* Mesh, const FVector& RelativeLocation, const FVector& RelativeScale, UMaterialInterface* Material, bool bCollision = true);
-
+	void ApplyCarMesh(UStaticMeshComponent* Comp, UStaticMesh* Mesh, float X);
+	void SetupTrainVisuals();
 	void BoardPlayer(APawn* Pawn);
 	void BeginDeparture();
 
@@ -38,6 +41,18 @@ protected:
 
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;
+
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* LocoComp;
+
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* CarAComp;
+
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* CarBComp;
+
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* RideFloor;
 
 	UPROPERTY(VisibleAnywhere)
 	UBoxComponent* DoorTrigger;

@@ -16,6 +16,7 @@ struct FCBHubBuildResult
 struct CBWorldBuilder
 {
 	static void ClearTemplateActors(UWorld* World);
+	static FCBHubBuildResult FindHub(UWorld* World);
 	static FCBHubBuildResult BuildHub(UWorld* World);
 	static void BuildArrival(UWorld* World);
 };

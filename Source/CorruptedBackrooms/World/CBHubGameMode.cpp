@@ -16,8 +16,12 @@ ACBHubGameMode::ACBHubGameMode()
 
 void ACBHubGameMode::StartPlay()
 {
-	CBWorldBuilder::ClearTemplateActors(GetWorld());
-	const FCBHubBuildResult Hub = CBWorldBuilder::BuildHub(GetWorld());
+	FCBHubBuildResult Hub = CBWorldBuilder::FindHub(GetWorld());
+	if (!Hub.Train)
+	{
+		CBWorldBuilder::ClearTemplateActors(GetWorld());
+		Hub = CBWorldBuilder::BuildHub(GetWorld());
+	}
 	Train = Hub.Train;
 	MenuCamera = Hub.MenuCamera;
 	Super::StartPlay();

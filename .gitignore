@@ -85,3 +85,7 @@ Desktop.ini
 # Rider
 .idea/
 *.sln.iml
+
+# Downloaded source art (imported into Content/Art)
+RawArt/
+Tools/__pycache__/

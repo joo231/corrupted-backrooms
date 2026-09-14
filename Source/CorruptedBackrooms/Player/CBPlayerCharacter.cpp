@@ -19,7 +19,10 @@ ACBPlayerCharacter::ACBPlayerCharacter()
 	GetCharacterMovement()->bOrientRotationToMovement = false;
 	GetCharacterMovement()->MaxWalkSpeed = 480.f;
 	GetCharacterMovement()->JumpZVelocity = 420.f;
-	GetCharacterMovement()->AirControl = 0.15f;
+	GetCharacterMovement()->AirControl = 0.2f;
+	GetCharacterMovement()->MaxStepHeight = 46.f;
+	GetCharacterMovement()->SetWalkableFloorAngle(60.f);
+	GetCharacterMovement()->bCanWalkOffLedges = true;
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	Camera->SetupAttachment(GetCapsuleComponent());
